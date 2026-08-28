@@ -1,8 +1,11 @@
+export type LoansStatus =
+  |  'borrowed'
+  | 'returned';
+
 export interface Loan {
-    
   id: number;
   student: string;
   equipment: string;
-  status: 'borrowed' | 'returned';
-
+  status: LoansStatus;
+  //status: 'borrowed' | 'returned';
 } 
