@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Loan, LoansStatus } from './loans.interface';
 import { CreateLoanDto } from './dto/create-loans.dto';
 
@@ -38,6 +38,14 @@ export class LoansService {
     };
     this.loans.push(newLoan);
     return newLoan;
+  }
+  remove(id: number) {
+    const index = this.loans.findIndex((loan)=>loan.id===id);
+    if (index===-1){
+        throw new NotFoundException('El prestamo con id' + id + 'no existe',);
+    }
+    const [deletedLoan]=this.loans.splice(index, 1);
+    return deletedLoan;
   }
 }
 

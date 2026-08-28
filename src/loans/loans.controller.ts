@@ -25,5 +25,9 @@ export class LoansController {
   @Post() create (@Body()body: CreateLoanDto){
     return this.loansService.create(body);
   }
+  @Delete(':id') remove(@Param('id')id: string) {
+    const loan = this.loansService.remove(Number(id));
+    return loan;
+  }
 }
 
