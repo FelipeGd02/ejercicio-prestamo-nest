@@ -42,7 +42,7 @@ export class LoansService {
   remove(id: number) {
     const index = this.loans.findIndex((loan)=>loan.id===id);
     if (index===-1){
-        throw new NotFoundException('El prestamo con id' + id + 'no existe',);
+        throw new NotFoundException('El prestamo con id' +  id  + 'no existe',);
     }
     const [deletedLoan]=this.loans.splice(index, 1);
     return deletedLoan;
